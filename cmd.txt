@@ -1,0 +1,3 @@
+./ligo run dry-run contracts/silly.mligo Deposit '(Map.empty:storage)' --amount 100
+./ligo run test contracts/silly.mligo 
+./ligo run test tests/silly.mligo
