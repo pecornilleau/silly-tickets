@@ -1,4 +1,4 @@
-#include "../contracts/silly.mligo"
+#include "../with_storage/silly.mligo"
 
 let _u = Test.reset_state 5n ([] : tez list)
 let debug = false 
@@ -10,6 +10,9 @@ let test_initial_storage_empty =
   let () = if debug then Test.log ("contract address", Tezos.address (Test.to_contract taddr)) in
   assert ((Map.size (Test.get_storage taddr)) = 0n)
 
+
+
+
 let test_balance_after_deposit = 
   let () = if debug then Test.log "test_balance_after_deposit" in
   let taddr, _, _ = Test.originate main (Map.empty : storage) 0tez in
@@ -19,6 +22,9 @@ let test_balance_after_deposit =
   let _gas_cons = Test.transfer_to_contract_exn contr Deposit deposit in
   // the contract's balance is increased by "deposit"
   assert ( Test.get_balance (Tezos.address contr) = deposit) 
+
+
+
 
 let test_withdraw_after_deposit = 
   let () = if debug then Test.log "test_withdraw_after_deposit" in
